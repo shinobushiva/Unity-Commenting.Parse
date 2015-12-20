@@ -49,7 +49,7 @@ public class CommentDelegateParseStore : MonoBehaviour
 				print (t.Exception);
 			} else {
 				// Login was successful.
-				print ("save success");
+				print ("load success");
 				pos = t.Result;
 				dataLoad = true;
 			}
@@ -69,6 +69,9 @@ public class CommentDelegateParseStore : MonoBehaviour
 				cd.comment = (string)po ["comment"];
 				cd.loc = ToVec3 ((string)po ["position"]);
 				cd.commentType = (string)po ["type"];
+
+				if(cd.comment.Length <=0)
+					continue;
 				
 				CommentObject co = master.AddComment (cd);
 
